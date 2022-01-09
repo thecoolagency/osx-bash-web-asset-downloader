@@ -47,28 +47,43 @@ wget --recursive --page-requisites --adjust-extension --span-hosts --convert-lin
 
 cd $domainName
 
-find . -type f -print0 | xargs -0 sed -i '' -e 's|"//|"https://|g'
+# find . -type f -print0 | xargs -0 sed -i '' -e 's|"//|"https://|g'
 
 touch /Users/$username/Documents/web-assets/$domainName/wget/output.txt
 
-grep -r " src=\"https://" . >> /Users/$username/Documents/web-assets/$domainName/wget/output.txt
+grep -r "src=\"https://" . >> /Users/$username/Documents/web-assets/$domainName/wget/output.txt
 
 cd ..
 
 awk -i inplace '!/'.js'/' output.txt
 awk -i inplace '!/'.css'/' output.txt
+awk -i inplace '!/'facebook.com'/' output.txt
 # awk -i inplace '!/'.pdf'/' output.txt
 # awk -i inplace '!/'.mp4'/' output.txt
 
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/^.*https/https/'
 
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.png.*/.png/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.PNG.*/.PNG/'
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.jpg.*/.jpg/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.JPG.*/.JPG/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.jpeg.*/.jpeg/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.JPEG.*/.JPEG/'
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.gif.*/.gif/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.GIF.*/.GIF/'
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.pdf.*/.pdf/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.PDF.*/.PDF/'
 find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.mp4.*/.mp4/'
+find . -type f -name "*.txt" -print0 | xargs -0 sed -i '' -e 's/.MP4.*/.MP4/'
 
 touch output-cleaned.txt
+
+# _______________________________________________ #
+# 
+# to do 
+# remove duplicate by file name, excluding url
+# 
+# _______________________________________________ #
 
 awk '!seen[$0]++' output.txt >> output-cleaned.txt
 
