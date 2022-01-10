@@ -7,7 +7,7 @@
 Web Assets Downloader is a script that downloads all JPG, PNG, GIF and MP4 files from the specified website site using WGET. Only to run on OS X 10.0+ (you can customize the script easily for any unix based environment).
 
 * **WGET:** To download site files and assets
-* **GREP:** To catch all lines containing the specified string (src=\"https://cdn)
+* **GREP:** To catch all lines containing the specified string (src=\"https://)
 * **AWK:** To remove duplicates and filter out certain file types (js, css, pdf, mp4). You can edit the scripts to include them.
 * **FIND (with XARGS):** To clean URL lines for WGET
 
